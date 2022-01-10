@@ -14,27 +14,27 @@
 # limitations under the License.
 #
 
-# mountpoint   		fstype	    device    					options     flags    (fstab    version    2)
+# mountpoint   		fstype	    device    					options     flags
 
-/bootloader   		emmc 		/dev/block/bootloader       defaults    flags=display="Bootloader";backup=1;flashimg=1
-/logo           	emmc        /dev/block/logo        		defaults    flags=display="Logo";backup=1;flashimg=1
-/vbmeta         	emmc        /dev/block/vbmeta  			defaults    flags=display="Vbmeta";backup=1;flashimg=1
-/recovery       	emmc        /dev/block/recovery			defaults    flags=display="Recovery";backup=1;flashimg=1
+/bootloader         emmc 		/dev/block/bootloader       defaults    flags=display="Bootloader";backup=1;flashimg=1
+/logo           	emmc        /dev/block/logo          	defaults    flags=display="Logo";backup=1;flashimg=1
+/vbmeta         	emmc        /dev/block/vbmeta  		    defaults    flags=display="Vbmeta";backup=1;flashimg=1
+/recovery       	emmc        /dev/block/recovery		    defaults    flags=display="Recovery";backup=1;flashimg=1
 /boot           	emmc    	/dev/block/boot         	defaults    flags=display="Boot";backup=1;flashimg=1
 /misc   			emmc    	/dev/block/misc         	defaults    flags=display="Misc";backup=1
 /system       		ext4    	/dev/block/system       	defaults    flags=display="System";backup=1;canbewiped;wipeingui
-/vendor 			ext4    	/dev/block/vendor       	defaults    flags=display="Vendor";backup=1;canbewiped;wipeingui
-/odm    			ext4    	/dev/block/odm          	defaults    flags=display="ODM";backup=1;canbewiped;wipeingui
-/param    			ext4    	/dev/block/param        	defaults    flags=display="Param";backup=1;canbewiped;wipeingui
+/vendor 		    ext4    	/dev/block/vendor       	defaults    flags=display="Vendor";backup=1;canbewiped;wipeingui
+/odm    		    ext4    	/dev/block/odm          	defaults    flags=display="Odm";backup=1;canbewiped;wipeingui
+/param    		  	ext4    	/dev/block/param        	defaults    flags=display="Param";backup=1;canbewiped;wipeingui
 /product    		ext4    	/dev/block/product      	defaults    flags=display="Product";backup=1;canbewiped;wipeingui
 /metadata    		ext4    	/dev/block/metadata     	defaults    flags=display="Metadata";backup=1;canbewiped;wipeingui
-/cri_data    		ext4    	/dev/block/cri_data     	defaults    flags=display="cri_data";backup=1;canbewiped;wipeingui
+/cri_data    	  	ext4    	/dev/block/cri_data     	defaults    flags=display="Cri_data";backup=1;canbewiped;wipeingui
 /tee    			ext4    	/dev/block/tee          	defaults    flags=display="Tee";backup=1;canbewiped;wipeingui
-/env    			ext4    	/dev/block/env          	defaults    flags=display="env";backup=1;canbewiped;wipeingui
-/dtbo    			ext4    	/dev/block/dtbo          	defaults    flags=display="dtbo";backup=1;canbewiped;wipeingui
-/reserved    		ext4    	/dev/block/reserved         defaults    flags=display="reserved";backup=1;canbewiped;wipeingui
+/env    			ext4    	/dev/block/env          	defaults    flags=display="Env";backup=1;canbewiped;wipeingui
+/dtbo    			ext4    	/dev/block/dtbo          	defaults    flags=display="Dtbo";backup=1;canbewiped;wipeingui
+/reserved    		ext4    	/dev/block/reserved         defaults    flags=display="Reserved";backup=1;canbewiped;wipeingui
 /cache  			ext4    	/dev/block/cache        	defaults    flags=display="Cache";canbewiped;wipeingui;wipeduringfactoryreset
 /data   			ext4    	/dev/block/data         	defaults    flags=display="Data";backup=1;canbewiped;wipeingui;wipeduringfactoryreset;settingsstorage;encryptable=/dev/block/platform/ffe07000.emmc/by-name/data
-/sdcard 			vfat    	/dev/block/mmcblk1p1    	defaults    flags=display="Micro SDcard";storage;wipeingui;removable;settingsstorage;backup=0;encryptable=userdata
+/sdcard 			vfat    	/dev/block/mmcblk1p1    	defaults    flags=display="Micro_SDcard";storage;wipeingui;removable;settingsstorage;backup=0;encryptable=userdata
 /sdcard         	vfat    	/dev/block/mmcblk       	defaults    voldmanaged=sdcard0:auto
-/udisk  			auto    	/dev/block/sd##         	defaults    voldmanaged=usbotg:auto
+/udisk  		    auto    	/dev/block/sd##         	defaults    voldmanaged=usbotg:auto
