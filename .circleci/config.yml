@@ -53,10 +53,9 @@ workflows:
   version: 2
   compress-norepo:
     jobs:
-
-          requires:
-            - build_b
+      - build_a:
           context: org-global
           matrix:
             parameters:
               platform: ["twrp-9.0"]
+ 
