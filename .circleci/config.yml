@@ -53,7 +53,7 @@ workflows:
   version: 2
   compress-norepo:
     jobs:
-      - build_a:
+
           requires:
             - build_b
           context: org-global
