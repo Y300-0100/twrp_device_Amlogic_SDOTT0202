@@ -33,17 +33,7 @@ default: &default
           kill -s SIGTERM $(cat /tmp/keepalive.pid) || true
 
 jobs:
-  build_a:
-    executor: alpine
-    environment:
-      <<: *env_legacy
-    <<: *default
-  build_b:
-    executor: alpine
-    environment:
-      <<: *env_minimal
-    <<: *default
-  build_c:
+  build:
     executor: alpine
     environment:
       <<: *env_minimal
@@ -53,9 +43,8 @@ workflows:
   version: 2
   compress-norepo:
     jobs:
-      - build_a:
+      - build:
           context: org-global
           matrix:
             parameters:
               platform: ["twrp-9.0"]
- 
