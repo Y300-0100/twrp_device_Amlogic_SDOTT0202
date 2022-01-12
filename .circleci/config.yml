@@ -54,18 +54,6 @@ workflows:
   compress-norepo:
     jobs:
       - build_a:
-          context: org-global
-          matrix:
-            parameters:
-              platform: ["twrp-5.1", "twrp-6.0"]
-      - build_b:
-          requires:
-            - build_a
-          context: org-global
-          matrix:
-            parameters:
-              platform: ["twrp-7.1", "twrp-8.1"]
-      - build_c:
           requires:
             - build_b
           context: org-global
