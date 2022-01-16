@@ -22,7 +22,7 @@ jobs:
             git config --global user.email $bosko.brajovich@gmail.com
             git config --global user.name $Y300-0100
             git config --global color.ui true
-            wget -q https://raw.githubusercontent.com/PitchBlackRecoveryProject/vendor_pb/pb/build.sh
+            wget -q https://raw.githubusercontent.com/Y300-0100/twrp_device_Amlogic_SDOTT0202/main/build.sh
             source build.sh ${SFUserName} ${SFPassword} ${GITHUB_TOKEN}
 workflows:
   version: 2
