@@ -1,50 +1,32 @@
-version: 2.1
-
-executors:
-  alpine:
-    docker:
-      - image: fr3akyphantom/skadoosh:latest
-        auth:
-          username: "Y300-0100"
-          password: "bosko2606"
-
-env_legacy: &env_legacy
-  RecName: "MinimalOmniRecovery"
-  Link: "https://github.com/OmniROM-Legacy/minimal_manifest_twrp_omni.git"
-  BRANCH: "<< parameters.platform >>"
-
-env_minimal: &env_minimal
-  RecName: "MinimalOmniRecovery"
-  Link: "https://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git"
-  BRANCH: "<< parameters.platform >>"
-
-default: &default
-  parameters:
-    platform:
-      type: string
-      default: ""
-  steps:
-    - checkout
-    - run:
-        name: "Compression Job for Minimal TWRP with << parameters.platform >> branch"
-        command: |
-          chmod a+x .circleci/keepalive.sh
-          .circleci/keepalive.sh & ./script.sh ${RecName} ${Link} ${BRANCH}
-          kill -s SIGTERM $(cat /tmp/keepalive.pid) || true
-
+version: 2
 jobs:
   build:
-    executor: alpine
+    docker:
+      # new all-in-one docker image
+      - image: fr3akyphantom/pitchblack-builder:latest
     environment:
-      <<: *env_minimal
-    <<: *default
-
+      MANIFEST_BRANCH: 'twrp-9.0'
+      PBRP_BRANCH: 'features'
+      VERSION: '3.2.0'
+      VENDOR: 'Amlogic'
+      CODENAME: 'SDOTT0202'
+      BUILD_LUNCH: 'omni_SDOTT0202-userdebug'
+      TEST_BUILD: 'true'
+    working_directory: /home/builder/pitchblack
+    steps:
+      - checkout
+      - run:
+          name: AIO Build
+          command: |
+            echo "Set GitAuth Infos too"
+            git config --global user.email $bosko.brajovich@gmail.com
+            git config --global user.name $Y300-0100
+            git config --global color.ui true
+            wget -q https://raw.githubusercontent.com/PitchBlackRecoveryProject/vendor_pb/pb/build.sh
+            source build.sh ${SFUserName} ${SFPassword} ${GITHUB_TOKEN}
 workflows:
   version: 2
-  compress-norepo:
+  build_and_test:
     jobs:
       - build:
           context: org-global
-          matrix:
-            parameters:
-              platform: ["twrp-9.0"]
